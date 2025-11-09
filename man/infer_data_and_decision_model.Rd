@@ -14,6 +14,7 @@ infer_data_and_decision_model(
   stan_model = empirical_bayes,
   clusters = 1,
   h_not = 0,
+  auxiliary_columns = c(),
   ...
 )
 }
@@ -37,18 +38,21 @@ where \code{x} is a column in the contrast matrix.}
 \item{uncertainty_matrix}{A matrix of observation specific uncertainties}
 
 \item{stan_model}{Which Bayesian model to use. Defaults to \link{empirical_bayes}
-but also allows \link{weakly_informative}, or an user supplied function see [].}
+but also allows \link{weakly_informative}, or an user supplied function.}
 
 \item{clusters}{The number of parallel threads/workers to run on.}
 
 \item{h_not}{The value of the null hypothesis for the difference in means}
 
-\item{...}{Additional arguments passed to
-\code{\link[rstan:sampling]{rstan::sampling}}. Note that verbose will
-always be forced to \code{FALSE} to avoid console flooding.}
+\item{auxiliary_columns}{Names of columns in the design matrix that does not
+have corresponding data in the data set. For example, this can be
+co-founding variables such as bashes.}
+
+\item{...}{Additional arguments passed to \link[rstan:stanmodel-method-sampling]{sampling}.
+Note that verbose will always be forced to \code{FALSE} to avoid console flooding.}
 }
 \value{
-A \code{\link[=tibble]{tibble()}} or \code{\link[=data.frame]{data.frame()}} annotated  with statistics of the
+A \link[tibble:tibble]{tibble} or \code{\link[=data.frame]{data.frame()}} annotated  with statistics of the
 posterior and p(error). \code{err} is the probability of error, i.e., the two
 tail-density supporting the null-hypothesis, \code{lfc} is the estimated
 \eqn{\log_2}-fold change, \code{sigma} is the common variance, and \code{lp} is the
@@ -65,11 +69,11 @@ the Stan manual for more details). In addition it returns a column
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Function to sample the posterior of the Bayesian data and
-decision model. It first produces the needed inputs for Stan's \code{\link[=sampling]{sampling()}}
+decision model. It first produces the needed inputs for Stan's \link[rstan:stanmodel-method-sampling]{sampling}
 for each peptide (or protein, PTM, etc.). It then runs the sampling for the
 data and decision model. From the posterior, it then collects estimates and
 sampling statistics from the posterior of data model and integrates the
-decision distribution D. It then returns a \code{\link[=tibble]{tibble()}} with all the
+decision distribution D. It then returns a \link[tibble:tibble]{tibble} with all the
 information for each peptide's posterior (see \strong{Value} below). There are
 major time gains to be made by running this procedure in parallel.
 \code{infer_data_and_decision_model} has an efficient wrapper around
@@ -152,7 +156,7 @@ yeast_norm \%>\%
     contrast,
     unc,
     clusters = 1 # I highly recommend increasing the number of parallel workers/clusters
-                 # this will greatly reduce the speed of running baldur
+                 # this will greatly reduce the time of running baldur
   )
 }
 }

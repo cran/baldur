@@ -1,3 +1,12 @@
+# baldur 0.0.4
+* Added feature to perform simple batch/co-founder analysis.
+* Fixed bug when checking the contrast matrix caused by numerical overflow.
+* Fixed numerical overflow in geometric mean calculation (psrn.R).
+* Extensive README update and documentation improvements.
+* Updated/corrected parts of the vignettes to be more accurate and explicit.
+* Added citation file to the repository and DOI to the GitHub README.
+* Updated docs and added rhub.
+
 # baldur 0.0.3
 * Updated in response to new `rstan` release on CRAN
 

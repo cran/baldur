@@ -1,8 +1,8 @@
 Package: baldur
 Title: Bayesian Hierarchical Modeling for Label-Free Proteomics
-Version: 0.0.3
+Version: 0.0.4
 Authors@R: 
-    person("Philip", "Berg", , "pb1015@msstate.edu", role = c("aut", "cre"),
+    person("Philip", "Berg", , "pberg@live.se", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3772-6185"))
 Description: Statistical decision in proteomics data using a hierarchical
     Bayesian model. There are two regression models for describing the 
@@ -15,12 +15,12 @@ Description: Statistical decision in proteomics data using a hierarchical
     each peptide in the data. Once the posterior is inferred, it integrates the
     tails to estimate the probability of error from which a statistical decision
     can be made.
-    See Berg and Popescu for details (<doi:10.1101/2023.05.11.540411>).
+    See Berg and Popescu for details (<doi:10.1016/j.mcpro.2023.100658>).
 License: MIT + file LICENSE
 URL: https://github.com/PhilipBerg/baldur
 Encoding: UTF-8
 Language: en-US
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Biarch: true
 Depends: R (>= 4.2.0)
 Imports: dplyr (>= 1.0.9), magrittr (>= 2.0.3), methods, purrr (>=
@@ -39,8 +39,8 @@ LazyData: true
 RdMacros: Rdpack
 BugReports: https://github.com/PhilipBerg/baldur/issues
 NeedsCompilation: yes
-Packaged: 2023-09-12 15:21:02 UTC; Pberg
-Author: Philip Berg [aut, cre] (<https://orcid.org/0000-0002-3772-6185>)
-Maintainer: Philip Berg <pb1015@msstate.edu>
+Packaged: 2025-11-08 22:54:10 UTC; Pberg
+Author: Philip Berg [aut, cre] (ORCID: <https://orcid.org/0000-0002-3772-6185>)
+Maintainer: Philip Berg <pberg@live.se>
 Repository: CRAN
-Date/Publication: 2023-09-18 08:50:05 UTC
+Date/Publication: 2025-11-09 10:00:18 UTC
